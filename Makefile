@@ -1,10 +1,14 @@
+FILENAME = rocket_animation
+
 default:
 	rm -f *.class
-	javac -cp "core.jar" rocket_animation.java
-	java -cp "core.jar:." rocket_animation 1800 500
+	rm -f *.java
+	cat ./files/top.txt $(FILENAME).pde ./files/bottom.txt >> $(FILENAME).java
+	javac -cp "./files/core.jar" $(FILENAME).java
+	java -cp "./files/core.jar:." $(FILENAME) 1800 500
 
 clean:
 	rm -f *.class
-
+	rm -f *.java
 run:
-	java -cp "core.jar:." rocket_animation
+	java -cp "./files/core.jar:." $(FILENAME)
