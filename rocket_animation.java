@@ -15,13 +15,19 @@ import java.io.IOException;
 public class rocket_animation extends PApplet {
 
 PImage rocket;
+PImage asteroid;
 
 public void setup() {
     // initial setup
+    background(51);
+    imageMode(CENTER);
+    rocket = loadImage("./images/rocket_ship.png");
+    asteroid = loadImage("./images/asteroid.png"); 
 }
 
 public void draw() {
     // loops
+    image(rocket, width/2, height/2);
 }
 
 public void mouseReleased() {
@@ -29,7 +35,15 @@ public void mouseReleased() {
 }
 
 public void settings() {
-    size(1800, 900);
+    int initWidth = 1800;
+    int initHeight = 900;
+    if(args != null && args.length == 2) {
+        initWidth = Integer.parseInt(args[0]);
+        initHeight = Integer.parseInt(args[1]);
+    } else {
+        println("Incorrect Syntax (Two args -> width, height)");
+    }
+    size(initWidth, initHeight);
 }
 
 static public void main(String[] passedArgs) {
